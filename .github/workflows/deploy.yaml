@@ -1,0 +1,24 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_ID: ${{ secrets.CRM_DOCKER_ID }}
+      DOCKER_PASSWORD: ${{ secrets.CRM_DOCKER_PASSWORD }}
+      GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker build
+        run: make ci-docker-build
+
+      - name: Docker push
+        run: make ci-docker-push
