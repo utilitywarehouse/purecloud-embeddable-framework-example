@@ -8,8 +8,8 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     env:
-      DOCKER_ID: ${{ secrets.DOCKER_ID }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_ID: ${{ secrets.CRM_DOCKER_ID }}
+      DOCKER_PASSWORD: ${{ secrets.CRM_DOCKER_PASSWORD }}
       GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
     steps:
       - name: Checkout
